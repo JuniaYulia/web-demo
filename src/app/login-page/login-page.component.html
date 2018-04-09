@@ -1,0 +1,53 @@
+
+<form class="form" [formGroup]="loginPage" (ngSubmit)="onSubmit(loginPage.value)">
+  <div style="background-color:rgb(163, 119, 204)" class="form-group">
+    <h1 style="font-weight:bolder">SIGN IN</h1>
+    <hr>
+    <table style="background-color: cadetblue;" align="center">
+      <tr>
+        <td>
+          <label style="margin-right:20px; font-weight:bolder" for="username">Username</label>
+        </td>
+        <td>
+          <input id="username" name="username" class="form-control" type="text" formControlName="username">
+          <div class="alert-danger" *ngIf="username.touched && username.invalid">
+            <div *ngIf="username.errors.required">
+              <p>Username is required</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <br>
+      <tr>
+        <td>
+          <label style="margin-right:20px; font-weight:bolder" for="password">Password</label>
+        </td>
+        <td>
+          <input type="password" id="password" name="password" class="form-control" formControlName="password">
+          <div class="alert-danger" *ngIf="password.touched && password.invalid">
+            <div class="password.errors.required">
+              <p>Password is required</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <br>
+      <tr>
+        <td></td>
+        <td>
+            <div *ngIf="isInvalidLogin" class="alert-danger">
+                <p>Invalid username or password</p>
+              </div>
+          <button type="submit" style="float:right" class="btn btn-primary">LOGIN</button>
+        </td>
+      </tr>
+      <br>
+      <tr>
+        <td></td>
+        <td>
+          <a style="float:right; color: rgb(254, 255, 255)" routerLink="/signup">Don't have an account?</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</form>

@@ -1,0 +1,43 @@
+
+<div [formGroup]="addressInfo">
+  <div class="form-group">
+    <table align="center" style="width:500px;">
+      <tr>
+        <div class="col-md-4" [ngClass]="displayCssField('street')">
+          <td>
+            <Label style="float: left;" for="street">Street</Label>
+            <input type="text" id="street" name="street" class="form-control" formControlName="street">
+            <error-message
+            [is-error]="isValidField('street')"
+            display-message="Street is required."
+            ></error-message>
+          </td>
+        </div>
+        <div class="col-md-5" [ngClass]="displayCssField('city')">
+          <td>
+            <label style="float: left;" for="city">City</label>
+            <input type="text" id="city" name="city" class="form-control" formControlName="city">
+            <error-message
+            [is-error]="isValidField('city')"
+            display-message="City is required."
+            ></error-message>
+          </td>
+        </div>
+        <div class="col-md-3" [ngClass]="displayCssField('state')">
+          <td>
+            <label style="float: left;" for="state">State</label>
+            <select id="state" name="state" class="form-control" formControlName="state">
+              <option *ngFor="let state of listOfStates" [ngValue]="state">
+                {{ state }}
+              </option>
+            </select>
+            <error-message
+            [is-error]="isValidField('state')"
+            display-message="State is required."
+            ></error-message>
+          </td>
+        </div>
+      </tr>
+    </table>
+  </div>
+</div>

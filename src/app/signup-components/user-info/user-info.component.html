@@ -1,0 +1,73 @@
+
+<div [formGroup]="userInfo">
+  <div class="form-group">
+    <table align="center" style="width:500px;">
+      <tr>
+        <div class="col-md-6" [ngClass]="displayCssField('username')">
+          <td>
+            <label style="float: left;" for="username">Username</label>
+            <input type="text" id="username" name="username" class="form-control" formControlName="username">
+            <div *ngIf="username.touched && username.invalid">
+              <div *ngIf="username.errors.required">
+                <error-message
+                [is-error]="isFieldValid('username')"
+                display-message="Username is required."
+                ></error-message>
+              </div>
+            </div>
+            <div *ngIf="username.touched && username.invalid">
+              <div *ngIf="username.errors.minlength">
+                <error-message
+                [is-error]="username.errors.minlength"
+                display-message="Username at least {{ username.errors.minlength.requiredLength }} characters " 
+                ></error-message>
+              </div>
+            </div>
+          </td>
+        </div>
+      </tr>
+      <br>
+      <tr>
+        <div class="col-md-6" [ngClass]="displayCssField('password')">
+          <td>
+            <label style="float: left;" for="password">Password</label>
+            <input type="password" id="password" name="password" class="form-control" formControlName="password">
+            <div *ngIf="password.touched && password.invalid">
+              <div *ngIf="password.errors.required">
+                <error-message
+                [is-error]="isFieldValid('password')"
+                display-message="Password is required"
+                ></error-message>
+              </div>
+            </div>
+            <div *ngIf="password.touched && password.invalid">
+              <div *ngIf="password.errors.minlength">
+                <error-message
+                [is-error]="password.errors.minlength"
+                display-message="Password at least {{ password.errors.minlength.requiredLength }} characters"
+                ></error-message>
+              </div>
+            </div>
+          </td>
+        </div>
+        <div class="col-md-6" [ngClass]="displayCssField('confirmPassword')">
+          <td>
+            <label style="float: left;" for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" formControlName="confirmPassword">
+            <div *ngIf="confirmPassword.touched && confirmPassword.invalid">
+              <div *ngIf="confirmPassword.errors.required">
+                <error-message
+                [is-error]="isFieldValid('confirmPassword')"
+                display-message="Please confirm password."
+                ></error-message>
+              </div>
+            </div>
+            <div class="alert-danger" *ngIf="confirmPassword.valid && userInfo.invalid && userInfo.errors.passwordConfirmer">
+              <span>Password do not match</span>
+            </div>
+          </td>
+        </div>
+      </tr>
+    </table>
+  </div>
+</div>

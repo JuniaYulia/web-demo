@@ -1,0 +1,44 @@
+
+<div [formGroup]="basicInfo">
+  <div class="form-group">
+    <h2>SIGN UP</h2>
+    <hr>
+    <table style="width:500px;" align="center">
+      <tr>
+        <div class="col-md-6" [ngClass]="displayCssField('firstName')">
+          <td>
+            <label style="float: left;" for="firstName">First Name</label>
+            <input type="text" name="firstName" class="form-control" formControlName="firstName">
+            <error-message
+            [is-error]="isValidField('firstName')"
+            display-message="First name is required."
+            ></error-message>
+          </td>
+        </div>
+        <div class="col-md-6" [ngClass]="displayCssField('lastName')">
+          <td>
+            <label style="float: left;" for="lastName">Last Name</label>
+            <input type="text" name="lastName" class="form-control" formControlName="lastName">
+            <error-message
+            [is-error]="isValidField('lastName')"
+            display-message="Last name is required."
+            ></error-message>
+          </td>
+        </div>
+      </tr>
+      <tr>
+        <br>
+        <div class="col-md-6" [ngClass]="displayCssField('dateOfBirth')">
+          <td>
+            <label style="float: left;" for="dateOfBirth">Date of Birth</label>
+            <input type="date" name="dateOfBirth" class="form-control" formControlName="dateOfBirth">
+            <error-message
+            [is-error]="isValidField('dateOfBirth')"
+            display-message="Date of birth is required."
+            ></error-message>
+          </td>
+        </div>
+      </tr>
+    </table>
+  </div>
+</div>

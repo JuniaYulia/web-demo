@@ -1,0 +1,41 @@
+
+<div [formGroup]="contactInfo">
+  <div class="form-group">
+    <table align="center" style="width:500px;">
+      <tr>
+        <div class="col-md-6" [ngClass]="displayCssField('email')">
+          <td>
+            <label style="float: left;" for="email">Email</label>
+            <input type="email" placeholder="name@provider.com" id="email" name="email" class="form-control" formControlName="email">
+            <div *ngIf="email.touched && email.invalid">
+              <div *ngIf="email.errors.required">
+                <error-message
+                [is-error]="isFieldValid('email')"
+                display-message="Email is required"
+                ></error-message>
+              </div>
+            </div>
+            <div *ngIf="email.touched && email.invalid">
+              <div *ngIf="email.errors.email">
+                <error-message
+                [is-error]="email.errors.email"
+                display-message="Invalid email address"
+                ></error-message>
+              </div>
+            </div>
+          </td>
+        </div>
+        <div class="col-md-6" [ngClass]="displayCssField('phone')">
+          <td>
+            <label style="float: left;" for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" class="form-control" placeholder="xxx-xxx-xxxx" formControlName="phone">
+            <error-message
+            [is-error]="isFieldValid('phone')"
+            display-message="Phone number is required"
+            ></error-message>
+          </td>
+        </div>
+      </tr>
+    </table>
+  </div>
+</div>
